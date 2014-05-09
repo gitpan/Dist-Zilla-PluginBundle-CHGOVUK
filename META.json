@@ -4,7 +4,7 @@
       "Companies House <chgovuk@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.013, CPAN::Meta::Converter version 2.140640",
+   "generated_by" : "Dist::Zilla version 5.015, CPAN::Meta::Converter version 2.140640",
    "license" : [
       "perl_5"
    ],
@@ -41,6 +41,7 @@
             "Dist::Zilla::Plugin::Git::GatherDir" : "0",
             "Dist::Zilla::Plugin::GithubMeta" : "0",
             "Dist::Zilla::Plugin::NameFromDirectory" : "0",
+            "Dist::Zilla::Plugin::Prereqs::FromCPANfile" : "0",
             "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0",
             "Dist::Zilla::Plugin::ReadmeFromPod" : "0",
             "Dist::Zilla::Plugin::ReversionOnRelease" : "0",
@@ -70,6 +71,6 @@
          "web" : "https://github.com/companieshouse/Dist-Zilla-PluginBundle-CHGOVUK"
       }
    },
-   "version" : "0.02"
+   "version" : "0.03"
 }
 

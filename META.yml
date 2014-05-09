@@ -9,7 +9,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: '6.30'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.013, CPAN::Meta::Converter version 2.140640'
+generated_by: 'Dist::Zilla version 5.015, CPAN::Meta::Converter version 2.140640'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -29,6 +29,7 @@ requires:
   Dist::Zilla::Plugin::Git::GatherDir: '0'
   Dist::Zilla::Plugin::GithubMeta: '0'
   Dist::Zilla::Plugin::NameFromDirectory: '0'
+  Dist::Zilla::Plugin::Prereqs::FromCPANfile: '0'
   Dist::Zilla::Plugin::ReadmeAnyFromPod: '0'
   Dist::Zilla::Plugin::ReadmeFromPod: '0'
   Dist::Zilla::Plugin::ReversionOnRelease: '0'
@@ -40,4 +41,4 @@ resources:
   bugtracker: https://github.com/companieshouse/Dist-Zilla-PluginBundle-CHGOVUK/issues
   homepage: https://github.com/companieshouse/Dist-Zilla-PluginBundle-CHGOVUK
   repository: https://github.com/companieshouse/Dist-Zilla-PluginBundle-CHGOVUK.git
-version: '0.02'
+version: '0.03'

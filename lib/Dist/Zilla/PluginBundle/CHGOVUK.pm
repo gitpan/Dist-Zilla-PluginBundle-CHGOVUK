@@ -1,4 +1,7 @@
 package Dist::Zilla::PluginBundle::CHGOVUK;
+
+our $VERSION = '0.03';
+
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy',
      'Dist::Zilla::Role::PluginBundle::Config::Slicer';
@@ -10,6 +13,13 @@ has installer => (
     isa => 'Str',
     lazy => 1,
     default => sub { $_[0]->payload->{installer} || 'MakeMaker' },
+);
+
+has prereqs => (
+    is => 'ro',
+    isa => 'Str',
+    lazy => 1,
+    default => sub { $_[0]->payload->{prereqs} || 'AutoPrereqs' },
 );
  
 sub build_file {
@@ -56,7 +66,7 @@ sub configure {
         # Set no_index to sensible directories
         [ 'MetaNoIndex', { directory => [ qw( t xt inc share eg examples ) ] } ],
  
-        [ 'AutoPrereqs' ],
+        [ $self->finder ],
         [ $self->installer ],
         [ 'MetaJSON' ],
  
