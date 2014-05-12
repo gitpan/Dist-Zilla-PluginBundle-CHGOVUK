@@ -66,7 +66,7 @@ sub configure {
         # Set no_index to sensible directories
         [ 'MetaNoIndex', { directory => [ qw( t xt inc share eg examples ) ] } ],
  
-        [ $self->finder ],
+        [ $self->prereqs ],
         [ $self->installer ],
         [ 'MetaJSON' ],
  
