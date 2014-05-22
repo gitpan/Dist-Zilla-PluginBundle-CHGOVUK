@@ -33,6 +33,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::PluginBundle::Config::Slicer" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "Moose" => 0,
+    "Test::Pod" => 0,
     "namespace::autoclean" => 0
   },
   "TEST_REQUIRES" => {
@@ -40,7 +41,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.04",
+  "VERSION" => "0.05",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -61,6 +62,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Role::PluginBundle::Easy" => 0,
   "Moose" => 0,
   "Test::More" => 0,
+  "Test::Pod" => 0,
   "namespace::autoclean" => 0,
   "strict" => 0,
   "warnings" => 0

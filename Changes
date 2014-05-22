@@ -1,5 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-CHGOVUK
 
+0.05  2014-05-22
+  - Get version number from perl module (not git tag)
+  - Copy build file and META.json back from build
+
 0.04  2014-05-12
   - Fix broken build
 
