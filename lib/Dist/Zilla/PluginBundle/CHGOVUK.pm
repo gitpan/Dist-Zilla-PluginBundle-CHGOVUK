@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::CHGOVUK;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy',
@@ -12,14 +12,14 @@ has installer => (
     is => 'ro',
     isa => 'Str',
     lazy => 1,
-    default => sub { $_[0]->payload->{installer} || 'MakeMaker' },
+    default => sub { $_[0]->payload->{installer} || 'ModuleBuild' },
 );
 
 has prereqs => (
     is => 'ro',
     isa => 'Str',
     lazy => 1,
-    default => sub { $_[0]->payload->{prereqs} || 'AutoPrereqs' },
+    default => sub { $_[0]->payload->{prereqs} || 'Prereqs::FromCPANfile' },
 );
 
 sub build_file {
@@ -47,14 +47,12 @@ sub configure {
 
         # Make the git repo installable
         [ 'Git::GatherDir', { exclude_filename => [ $self->build_file, 'META.json', 'LICENSE', @exclude_release ] } ],
-        [ 'CopyFilesFromBuild', { copy => [ 'META.json', 'LICENSE', $self->build_file ] } ],
+	[ 'CopyFilesFromBuild', { copy => [ 'LICENSE' ] } ],
 
         # should be after GatherDir
         # Equivalent to Module::Install's version_from, license_from and author_from
         [ 'VersionFromModule' ],
         #[ 'LicenseFromModule', { override_author => 1 } ],
-
-        [ 'ReversionOnRelease', { prompt => 1 } ],
 
         # after ReversionOnRelease for munge_files, before Git::Commit for after_release
         [ 'NextRelease', { format => '%-v  %{yyyy-MM-dd}d' } ],
@@ -85,7 +83,6 @@ sub configure {
 
         [ 'CheckChangesHasContent' ],
         [ 'TestRelease' ],
-        [ 'ConfirmRelease' ],
         [ 'FakeRelease' ],
 
         [ 'CopyFilesFromRelease', { match => '\.pm$' } ],
@@ -94,6 +91,7 @@ sub configure {
             allow_dirty => \@dirty_files,
             allow_dirty_match => '\.pm$', # .pm files copied back from Release
         } ],
+        [ 'Git::CommitBuild', { release_branch => 'releases', release_message => '%v %h' } ],
         [ 'Git::Tag', { tag_format => '%v', tag_message => '' } ],
         [ 'Git::Push', { remotes_must_exist => 0 } ],
 
