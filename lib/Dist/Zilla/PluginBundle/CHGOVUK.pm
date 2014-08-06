@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::CHGOVUK;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy',
@@ -85,7 +85,6 @@ sub configure {
         [ 'TestRelease' ],
         [ 'FakeRelease' ],
 
-        [ 'CopyFilesFromRelease', { match => '\.pm$' } ],
         [ 'Git::Commit', {
             commit_msg => '%v',
             allow_dirty => \@dirty_files,
